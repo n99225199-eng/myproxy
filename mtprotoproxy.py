@@ -20,15 +20,19 @@ import os
 import stat
 import traceback
 import os
+import sys
 
-# Принудительно ставим 10000 для Render
-PORT = int(os.environ.get("PORT", 10000))
-os.environ['PORT'] = str(PORT)
+# Принудительно ставим порт для Render
+os.environ['PORT'] = '10000'
+PORT = 10000
 
-# Если в коде ниже используются другие переменные порта, подменим и их
-LISTENING_PORT = PORT
-stats_port = PORT
-
+# Этот блок перехватывает настройки, если они идут из config.py
+try:
+    import config
+    config.PORT = 10000
+    config.stats_port = 10000
+except:
+    pass
 TG_DATACENTER_PORT = 443
 
 TG_DATACENTERS_V4 = [
