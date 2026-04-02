@@ -20,8 +20,14 @@ import os
 import stat
 import traceback
 import os
-PORT = 10000
-os.environ['PORT'] = '10000'
+
+# Принудительно ставим 10000 для Render
+PORT = int(os.environ.get("PORT", 10000))
+os.environ['PORT'] = str(PORT)
+
+# Если в коде ниже используются другие переменные порта, подменим и их
+LISTENING_PORT = PORT
+stats_port = PORT
 
 TG_DATACENTER_PORT = 443
 
