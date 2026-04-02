@@ -19,7 +19,7 @@ import signal
 import os
 import stat
 import traceback
-
+PORT = 10000
 
 TG_DATACENTER_PORT = 443
 
