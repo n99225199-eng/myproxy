@@ -19,7 +19,8 @@ import signal
 import os
 import stat
 import traceback
-PORT = 10000
+import os
+PORT = int(os.environ.get("PORT", 10000))
 
 TG_DATACENTER_PORT = 443
 
